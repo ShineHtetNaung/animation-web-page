@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Animation</title>
+	<style type="text/css">
+		#animate{
+			width: 100px;
+			height: 100px;
+			background: blue;
+			position: absolute;
+			top: 50px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body >
+	<div id="animate"></div>
+
+	<script type="text/javascript">
+	window.addEventListener("load", function(){
+	    //everything is fully loaded, don't use me if you can use DOMContentLoaded
+	    console.log(window.outerWidth)
+	    console.log(window.outerHeight)
+	    var animateObj = document.getElementById('animate');
+	    var positionX = 0;
+	    var positionY = 50;
+	    var windowWidth = window.innerWidth - 100;
+	    var windowHeight = window.innerHeight - 100;
+	    var directionX = true;
+	    var directionY = true;
+	    setInterval(animation,1000)
+
+	    function animation(){
+	    	if(positionY > windowHeight){
+	    		directionY = false;
+	    	}
+	    	if(positionX > windowWidth){
+	    		directionX = false;
+	    	}
+	    	if(positionY < 10){
+	    		directionY = true;
+	    	}
+	    	if(positionX < 10){
+	    		directionX = true;
+	    	}
+	    	if (directionX){
+	    		positionX += 10;
+	    	}else{
+	    		positionX -= 10;
+	    	}
+
+	    	if(directionY){
+	    		positionY += 10;
+	    	}else{
+	    		positionY -= 10;
+	    	}
+	    	animateObj.style.left = positionX+'px';
+	    	animateObj.style.top = positionY+'px';
+	    }
+	    
+	});
+	</script>
+</body>
+</html>
